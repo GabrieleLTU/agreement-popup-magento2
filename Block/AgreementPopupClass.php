@@ -23,41 +23,26 @@ class AgreementPopupClass extends \Magento\Framework\View\Element\Template
        $this->_cookieHelper = $cookieHelper;
        $this->_scopeConfig = $scopeConfig;
        parent::__construct($context, $data);
-       $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/cron.log');
-       $logger = new \Zend\Log\Logger();
-       $logger->addWriter($writer);
-       $logger->info( __METHOD__ );
    }
 
    public function getCookie()
    {
-       $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/cron.log');
-       $logger = new \Zend\Log\Logger();
-       $logger->addWriter($writer);
-       $logger->info( __METHOD__ );
        if(!isset($_COOKIE['agreement'])) {
 
-//           setcookie('agreement', false);
-//           $_COOKIE['lg'] = 'ro';
            $this->_cookieHelper->setCookie("false");
-           $logger->info( "false" );
        }
 
-       //$cookieValue = $this->_cookieManager->getCookie(\Visma\AgreementPopup\Controller\Cookie\AddCookie::COOKIE_NAME);
-       //return($cookieValue);
        return($this->_cookieHelper->getCookie());
    }
 
     public function setCookieAgree()
     {
-        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/cron.log');
-        $logger = new \Zend\Log\Logger();
-        $logger->addWriter($writer);
-        $logger->info( __METHOD__ );
+        if(isset($_POST['agreeButton'])){
         $this->_cookieHelper->setCookie("true");
+        }
     }
 
-    public function getConfigInfo() //: array
+    public function getConfigInfo()
     {
         $agreementText = $this->_scopeConfig->getValue('clientagreement/general/display_agreement_text', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         $agreementUrlText = $this->_scopeConfig->getValue('clientagreement/general/agreement_url_text', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
@@ -69,10 +54,4 @@ class AgreementPopupClass extends \Magento\Framework\View\Element\Template
             "agreement_url" => $agreementUrl
         );
     }
-    public function getContent() //: string
-    {
-        return 'Dummy content';
-    }
-
-
 }
