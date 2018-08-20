@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <clientagreement>
+            <general>
+                <display_agreement_text>Main info can be found</display_agreement_text>
+                <agreement_url_text>here</agreement_url_text>
+                <agreement_url>https://google.com</agreement_url>
+            </general>
+        </clientagreement>
+    </default>
+</config>

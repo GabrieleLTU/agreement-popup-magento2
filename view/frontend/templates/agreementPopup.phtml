@@ -1,0 +1,33 @@
+<!--<div id="modal-content">-->
+<!--    --><?php //echo $block->getContent(); ?>
+<!--</div>-->
+<!--<button id="agreementPopup-modal-button" data-mage-init='{"agreementPopup-modal": {"target": "#modal-content"}}'>-->
+<!--    Open modal-->
+<!--</button>-->
+
+<?php
+    $cookieValue = $block->getCookie();
+    $configData = $block->getConfigInfo();
+
+    if ($cookieValue !== "true")
+        { ?>
+            <form method="POST" >
+                <div id="agree-modal" style="color: white; background:gray; right: 0; left: 0; bottom:0; position: fixed; padding: 15px; z-index: 100;">
+                    <p><?php echo $configData["agreement_text"]; ?><a href="<?php echo $configData["agreement_url"]; ?>" target="_blank"><?php echo $configData["agreement_url_text"]; ?></a></p>
+                    <button name="agreeButton" onclick="agreed()" type="submit" class="action subscribe primary">Agree</button>
+                </div>
+            </form>
+    <?php }
+
+
+    if(isset($_POST['agreeButton'])){
+        $block->setCookieAgree();
+    }?>
+
+<script type="text/javascript">
+    function agreed()
+    {
+        // document.cookie = "agreement=true";
+        document.getElementById("agree-modal").style.display= "none";
+    }
+</script>
