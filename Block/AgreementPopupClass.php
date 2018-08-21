@@ -23,7 +23,7 @@ class AgreementPopupClass extends \Magento\Framework\View\Element\Template
 
    public function getCookie()
    {
-       if(!isset($_COOKIE['agreement'])) {//cookie name as const is in cookieHelper
+       if(!isset($_COOKIE[$this->_cookieController->getCookieName()])) {
 
            $this->_cookieController->setCookie("false");
        }

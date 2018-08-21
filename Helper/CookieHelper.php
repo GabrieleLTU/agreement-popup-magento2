@@ -11,9 +11,6 @@ use Magento\Framework\Session\SessionManagerInterface;
 
 class CookieHelper extends AbstractHelper
 {
-
-    CONST COOKIE_NAME = 'agreement';
-    CONST COOKIE_LIFE = 604800;
     protected $cookieManager;
     protected $cookieMetadataFactory;
     private $scopeConfigInterface;
@@ -32,36 +29,31 @@ class CookieHelper extends AbstractHelper
         $this->sessionManager = $sessionManager;
     }
 
-    public function getCookie()
+    public function getCookie($cookieName)
     {
-        return $this->cookieManager->getCookie(self::COOKIE_NAME);
+        return $this->cookieManager->getCookie($cookieName);
     }
 
-    public function setCookie($value)
+    public function setCookie($cookieName, $value, $cookieLifeTime)
     {
         $metadata = $this->cookieMetadataFactory
             ->createPublicCookieMetadata()
-            ->setDuration(self::COOKIE_LIFE)
+            ->setDuration($cookieLifeTime)
             ->setPath($this->sessionManager->getCookiePath())
             ->setDomain($this->sessionManager->getCookieDomain());
 
-        $this->cookieManager->setPublicCookie(self::COOKIE_NAME, $value, $metadata);
+        $this->cookieManager->setPublicCookie($cookieName, $value, $metadata);
 
     }
 
-    public function delete()
-    {
-        $this->cookieManager->deleteCookie(
-            self::COOKIE_NAME,
-            $this->cookieMetadataFactory
-                ->createCookieMetadata()
-                ->setPath($this->sessionManager->getCookiePath())
-                ->setDomain($this->sessionManager->getCookieDomain())
-        );
-    }
-
-    public function getCookielifetime()
-    {
-        return self::COOKIE_LIFE;
-    }
+//    public function delete($cookieName)
+//    {
+//        $this->cookieManager->deleteCookie(
+//            $cookieName,
+//            $this->cookieMetadataFactory
+//                ->createCookieMetadata()
+//                ->setPath($this->sessionManager->getCookiePath())
+//                ->setDomain($this->sessionManager->getCookieDomain())
+//        );
+//    }
 }

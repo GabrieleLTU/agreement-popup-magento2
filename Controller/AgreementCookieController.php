@@ -10,6 +10,8 @@ class AgreementCookieController extends Template
 {
     protected $_cookieManager;
     protected $_cookieHelper;
+    CONST COOKIE_NAME = 'agreement';
+    CONST COOKIE_LIFE = 604800;
 
     public function __construct(
         Context $context,
@@ -25,11 +27,21 @@ class AgreementCookieController extends Template
 
     public function getCookie()
     {
-        return($this->_cookieHelper->getCookie());
+        return($this->_cookieHelper->getCookie(self::COOKIE_NAME));
     }
 
     public function setCookie($value)
     {
-        $this->_cookieHelper->setCookie($value);
+        $this->_cookieHelper->setCookie(self::COOKIE_NAME, $value, self::COOKIE_LIFE);
+    }
+
+    public function getCookieLifetime()
+    {
+        return self::COOKIE_LIFE;
+    }
+
+    public function getCookieName()
+    {
+        return self::COOKIE_NAME;
     }
 }
