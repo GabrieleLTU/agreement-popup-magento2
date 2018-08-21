@@ -43,11 +43,13 @@ class AgreementPopupClass extends \Magento\Framework\View\Element\Template
         $agreementText = $this->_scopeConfig->getValue('clientagreement/general/display_agreement_text', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         $agreementUrlText = $this->_scopeConfig->getValue('clientagreement/general/agreement_url_text', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         $agreementUrl = $this->_scopeConfig->getValue('clientagreement/general/agreement_url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $popupPosition = $this->_scopeConfig->getValue('clientagreement/general/popup_position', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
         return array (
             "agreement_text" => $agreementText,
             "agreement_url_text" => $agreementUrlText,
-            "agreement_url" => $agreementUrl
+            "agreement_url" => $agreementUrl,
+            "popup_position" => $popupPosition
         );
     }
 }

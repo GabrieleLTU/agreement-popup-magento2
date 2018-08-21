@@ -19,6 +19,10 @@
                 <field id="agreement_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Agreement URL</label>
                 </field>
+                <field id="popup_position" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Position of agreement popup</label>
+                    <source_model>Visma\AgreementPopup\Model\Config\Source\PopupPosition</source_model>
+                </field>
             </group>
         </section>
     </system>
