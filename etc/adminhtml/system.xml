@@ -8,8 +8,16 @@
             <class>separator-top</class>
             <label>Client agreement page</label>
             <tab>visma</tab>
-            <resource>Visma_PromoPage::promopage_config</resource>
+            <resource>Visma_AgreementPopup::agreementpopup_config</resource>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="display" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Display Settings</label>
                 <field id="display_agreement_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Agreement text</label>
                 </field>

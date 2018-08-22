@@ -6,7 +6,7 @@
     if ($cookieValue !== "true") { ?>
         <form method="POST" action="<?php echo $block->setCookieAgree();?>" >
             <div id="agree-modal" style="color: white; background:gray; right: 0; left: 0; <?php echo $configData["popup_position"]?>:0; position: fixed; padding: 15px; z-index: 100;">
-                <p><?php echo $configData["agreement_text"]; ?><a href="<?php echo $configData["agreement_url"]; ?>" target="_blank"><?php echo $configData["agreement_url_text"]; ?></a></p>
+                <p><?php echo $configData["agreement_text"]; ?> <a href="<?php echo $configData["agreement_url"]; ?>" target="_blank"><?php echo $configData["agreement_url_text"]; ?></a></p>
                 <button name="agreeButton" id="clickButton" onclick="agreed()" type="submit" class="action subscribe primary">Agree</button>
             </div>
         </form>
@@ -16,6 +16,11 @@
 <script type="text/javascript">
     function agreed()
     {
+        // console.log("Output;");
+        // console.log(location.hostname);
+        // console.log(document.domain);
+        // alert(window.location.hostname)
+        document.cookie = "agreement=true; domain=." + document.domain;
         document.getElementById("agree-modal").style.display= "none";
     }
 </script>

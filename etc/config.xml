@@ -3,11 +3,14 @@
     <default>
         <clientagreement>
             <general>
-                <display_agreement_text>Main info can be found</display_agreement_text>
+                <enable>1</enable>
+            </general>
+            <display>
+                <display_agreement_text>All info can be found</display_agreement_text>
                 <agreement_url_text>here</agreement_url_text>
                 <agreement_url>https://google.com</agreement_url>
                 <popup_position>bottom</popup_position>
-            </general>
+            </display>
         </clientagreement>
     </default>
 </config>
